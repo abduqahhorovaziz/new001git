@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Project (test001)</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css">
+</head>
+
+<body>
+    <main>
+        <header class="header">
+            <div class="rightSide">
+                <div class="logoBox">
+                    <h2>Menu</h2>
+                </div>
+                <div class="menuBox">
+                    <nav class="accordion-wrapper">
+                        <ul class="ul-reset">
+                            <!-- <li><a href="#">Home</a></li>
+                            <li><a href="#">Products</a></li> -->
+                            <li>
+                                <a href="#">Users</a>
+                                <ul class="ul-reset">
+                                    <li><a href="pages/addUser.html">Add User</a></li>
+                                    <li><a href="#">Edit User</a></li>
+                                    <li><a href="#">Archive User</a></li>
+                                </ul><!-- .ul-reset -->
+                            </li>
+                            <!-- <li>
+                                <a href="#">Dropdown Two</a>
+                                <ul class="ul-reset">
+                                    <li><a href="#">Sub-Category One</a></li>
+                                    <li><a href="#">Sub-Category Two</a></li>
+                                    <li><a href="#">Sub-Category Three</a></li>
+                                    <li><a href="#">Sub-Category Four</a></li>
+                                    <li><a href="#">Sub-Category Five</a></li>
+                                </ul>.ul-reset -->
+                            <!-- </li>
+                            <li><a href="#">Contact</a></li> -->
+                        </ul><!-- .ul-reset -->
+                    </nav>
+                </div>
+
+            </div>
+            <div class="leftSide"></div>
+        </header>
+    </main>
+</body>
+<script src="js/jquery3.5.1.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="https://use.fontawesome.com/50e4eff350.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.accordion-wrapper > ul > li:has(ul)').addClass("accordion-content");
+
+        $('.accordion-wrapper > ul > li > a').click(function () {
+            var checkElement = $(this).next();
+
+            $('.accordion-wrapper li').removeClass('accordion-active');
+            $(this).closest('li.accordion-content').addClass('accordion-active');
+
+            if ((checkElement.is('ul')) && (checkElement.is(':visible'))) {
+                $(this).closest('li').removeClass('accordion-active');
+                checkElement.slideUp('normal');
+            }
+
+            if ((checkElement.is('ul')) && (!checkElement.is(':visible'))) {
+                $('.accordion-wrapper ul ul:visible').slideUp('normal');
+                checkElement.slideDown('normal');
+            }
+
+            if (checkElement.is('ul')) {
+                return false;
+            } else {
+                return true;
+            }
+        });
+    });
+</script>
+
+</html>
